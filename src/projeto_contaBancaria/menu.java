@@ -11,14 +11,6 @@ public class menu {
 
 	public static void main(String[] args) {
 
-		// TESTE CLASSE CONTA
-		conta c1 = new conta(2108, 01, 1, "Samuel", 1000.0f);
-		c1.visualizar();
-		c1.sacar(1200.0f);
-		c1.visualizar();
-		c1.depositar(500.0f);
-		c1.visualizar();
-
 		// TESTE CLASSE CONTA CORRENTE
 		contaCorrente cc1 = new contaCorrente(2, 123, 1, "Mariana", 1500.0f, 100.0f);
 		cc1.visualizar();
