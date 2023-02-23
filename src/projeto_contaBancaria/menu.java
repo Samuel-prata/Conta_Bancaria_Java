@@ -3,6 +3,8 @@ package projeto_contaBancaria;
 import java.util.Scanner;
 
 import conta.model.conta;
+import conta.model.contaCorrente;
+import conta.model.contaPoupança;
 import conta.util.cores;
 
 public class menu {
@@ -16,6 +18,22 @@ public class menu {
 		c1.visualizar();
 		c1.depositar(500.0f);
 		c1.visualizar();
+
+		// TESTE CLASSE CONTA CORRENTE
+		contaCorrente cc1 = new contaCorrente(2, 123, 1, "Mariana", 1500.0f, 100.0f);
+		cc1.visualizar();
+		cc1.sacar(1200.0f);
+		cc1.visualizar();
+		cc1.depositar(500.0f);
+		cc1.visualizar();
+
+		// TESTE CLASSE CONTA POUPANÇA
+		contaPoupança cp1 = new contaPoupança(3, 213, 2, "Enzo", 10000.0f, 15);
+		cp1.visualizar();
+		cp1.sacar(1200.0f);
+		cp1.visualizar();
+		cp1.depositar(5000.0f);
+		cp1.visualizar();
 
 		Scanner l = new Scanner(System.in);
 
