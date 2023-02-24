@@ -13,5 +13,8 @@ public interface contaRepository {
 	public void sacar(int numero, float valor);
 	public void depoistar(int numero, float valor);
 	public void transferir(int numeroOrigem, int numeroDestino, float valor);
+	public int gerador();
+	conta buscar(int numero);
+	
 	
 }
