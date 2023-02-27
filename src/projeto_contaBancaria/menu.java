@@ -18,12 +18,12 @@ public class menu {
 		contaController contas = new contaController();
 
 		// VARIAVEIS
-		int op, numero, agencia, tipo, aniversario;
+		int op, numero, agencia, tipo, aniversario, destino;
 		String nomeTitular;
-		float saldo, limite;
+		float saldo, limite, valor;
 
 		// TESTE CLASSE CONTA CORRENTE
-		//contaCorrente cc1 = new contaCorrente(2, 123, 1, "Mariana", 1500.0f, 100.0f);
+		// contaCorrente cc1 = new contaCorrente(2, 123, 1, "Mariana", 1500.0f, 100.0f);
 		// cc1.visualizar();
 		// cc1.sacar(1200.0f);
 		// cc1.depositar(500.0f);
@@ -59,7 +59,6 @@ public class menu {
 			System.out.println("----------------------------------------------------");
 			System.out.println("Entre com a opção desejada:                         ");
 			System.out.println("                                                    " + cores.TEXT_RESET);
-
 
 			try {
 				op = l.nextInt();
@@ -191,16 +190,56 @@ public class menu {
 
 			case 6:
 				System.out.println(cores.TEXT_WHITE_BOLD + "Sacar\n\n");
+				
+				System.out.println("Digite o número da conta: ");
+				numero = l.nextInt();
+
+				do {
+
+					System.out.println("\nDigite o valor: ");
+					valor = l.nextFloat();
+
+				} while (valor <= 0.0);
+
+				contas.sacar(numero, valor);//enviando parametros 
 				keyPress();
 				break;
 
 			case 7:
 				System.out.println(cores.TEXT_WHITE_BOLD + "Depósito\n\n");
+				
+				System.out.println("Digite o número da conta: ");
+				numero = l.nextInt();
+
+				do {
+
+					System.out.println("\nDigite o valor: ");
+					valor = l.nextFloat();
+
+				} while (valor <= 0.0);
+
+				contas.depoistar(numero, valor);
+				
 				keyPress();
 				break;
 
 			case 8:
 				System.out.println(cores.TEXT_WHITE_BOLD + "Transferência\n\n");
+				
+				System.out.println("Digite o número da conta de origem: ");
+				numero = l.nextInt();
+				System.out.println("Digite o número da conta de destino: ");
+				int numeroDestino = l.nextInt();
+
+				do {
+
+					System.out.println("\nDigite o valor: ");
+					valor = l.nextFloat();
+
+				} while (valor <= 0.0);
+
+				contas.transferir(numero, numeroDestino, valor); // parametros
+				
 				keyPress();
 				break;
 

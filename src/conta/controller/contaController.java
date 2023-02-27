@@ -48,32 +48,60 @@ public class contaController implements contaRepository {
 	@Override
 	public void deletar(int numero) {
 		var del = buscar(numero);
-		
-		if(del != null) {
-			if(listaContas.remove(del) == true) {
-				System.out.println("\nA conta de número: "+del.getNumero()+" Foi deletada com sucesso!");
+
+		if (del != null) {
+			if (listaContas.remove(del) == true) {
+				System.out.println("\nA conta de número: " + del.getNumero() + " Foi deletada com sucesso!");
 			}
-		}else {
-			System.out.println("\nA conta com número: "+del.getNumero()+" não foi encontrado!");
+		} else {
+			System.out.println("\nA conta com número: " + del.getNumero() + " não foi encontrado!");
 		}
 
 	}
 
 	@Override
 	public void sacar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		var buscar = buscar(numero);
+
+		if (buscar != null) {
+
+			if (listaContas.get(listaContas.indexOf(buscar)).sacar(valor) == true) {
+				System.out.println("\nO saque da conta" + numero + " foi efetuado com sucesso!");
+			}
+			System.out.println("\nConta não encontrada!");
+		}
 
 	}
 
 	@Override
 	public void depoistar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		var busca = buscar(numero);
+
+		if (buscar(numero) != null) {
+			var indice = listaContas.indexOf(busca);
+			listaContas.get(indice).depositar(valor);
+			System.out.println("\nO depósito na conta " + numero + " foi efetuado com sucesso!");
+		} else {
+			System.out.println("\nA conta não foi encontrada!");
+		}
 
 	}
 
 	@Override
 	public void transferir(int numeroOrigem, int numeroDestino, float valor) {
-		// TODO Auto-generated method stub
+		var numOrigem = buscar(numeroOrigem);
+		var numDest = buscar(numeroDestino);
+
+		if (buscar(numeroOrigem) != null && buscar(numeroDestino) != null) {
+			
+			if (listaContas.get(listaContas.indexOf(numOrigem)).sacar(valor) == true) {
+				listaContas.get(listaContas.indexOf(numDest)).depositar(valor);
+				System.out.println("\nTransferência realizada com sucesso!");
+			}
+			
+		} else {
+			System.out.println("\nA conta de origem e/ou destino não foram encontradas");
+		}
 
 	}
 
